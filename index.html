@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrownWigs | Perucas Premium</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cabeçalho / Menu -->
+    <header>
+        <div class="logo">CrownWigs</div>
+        <nav>
+            <ul>
+                <li><a href="#produtos">Coleções</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="toggleCarrinho()">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner">
+        <h1>Transforme seu Visual com Perucas Premium</h1>
+        <p>Cabelo humano, fibra futura e as melhores laces do mercado.</p>
+        <a href="#produtos" class="btn-shop">Ver Modelos</a>
+    </section>
+
+    <!-- Seção de Produtos -->
+    <main id="produtos">
+        <h2>Nossas Perucas Mais Vendidas</h2>
+        <div class="product-grid">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Peruca Lace Front Humana">
+                <h3>Lace Front - Cacheada Humana</h3>
+                <p class="price">R$ 1.200,00</p>
+                <button onclick="adicionarAoCarrinho('Lace Front Cacheada', 1200)">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Peruca Fibra Futura Lisa">
+                <h3>Peruca Lisa - Fibra Futura Premium</h3>
+                <p class="price">R$ 450,00</p>
+                <button onclick="adicionarAoCarrinho('Fibra Futura Lisa', 450)">Adicionar ao Carrinho</button>
+            </div>
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Peruca Bob Ondulado">
+                <h3>Bob Ondulado - Ruivo Natural</h3>
+                <p class="price">R$ 890,00</p>
+                <button onclick="adicionarAoCarrinho('Bob Ondulado Ruivo', 890)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lateral do Carrinho (Escondido por padrão) -->
+    <div id="sidebar-carrinho" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Seu Carrinho</h3>
+            <span class="close-btn" onclick="toggleCarrinho()">&times;</span>
+        </div>
+        <div id="itens-carrinho">
+            <p style="padding: 20px; color: #777;">Seu carrinho está vazio.</p>
+        </div>
+        <div class="sidebar-footer">
+            <p>Total: <strong id="total-carrinho">R$ 0,00</strong></p>
+            <button class="btn-checkout">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CrownWigs. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
