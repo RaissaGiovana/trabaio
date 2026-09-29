@@ -1,0 +1,442 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-gold: #c5a059;
+  --primary-gold-hover: #b08c46;
+  --bg-dark: #121212;
+  --bg-light: #fdfbf7;
+  --card-bg: #ffffff;
+  --text-main: #2b2b2b;
+  --text-muted: #666666;
+  --border-color: #eee0d0;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 15px 35px rgba(197, 160, 89, 0.15);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO / NAVBAR
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.2rem 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+nav ul li a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary-gold);
+  transition: var(--transition);
+}
+
+nav ul li a:hover {
+  color: var(--primary-gold);
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-icon:hover {
+  background: var(--primary-gold);
+  color: #121212;
+}
+
+#cart-count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: var(--primary-gold);
+  color: #121212;
+  padding: 2px 8px;
+  border-radius: 20px;
+  transition: var(--transition);
+}
+
+.cart-icon:hover #cart-count {
+  background-color: #121212;
+  color: var(--primary-gold);
+}
+
+/* ==========================================================================
+   3. BANNER PRINCIPAL
+   ========================================================================== */
+.banner {
+  background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)),
+              url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10%;
+  color: #ffffff;
+}
+
+.banner h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+  max-width: 800px;
+}
+
+.banner p {
+  font-size: 1.2rem;
+  color: #dddddd;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+.btn-shop {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background-color: var(--primary-gold);
+  color: #121212;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+}
+
+.btn-shop:hover {
+  background-color: #ffffff;
+  color: #121212;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   4. SEÇÃO DE PRODUTOS
+   ========================================================================== */
+main#produtos {
+  padding: 6rem 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+main#produtos h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  color: var(--bg-dark);
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+main#produtos h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-gold);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.product-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-gold);
+}
+
+.product-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  background-color: #f4f0eb;
+  transition: var(--transition);
+}
+
+.product-card:hover img {
+  transform: scale(1.03);
+}
+
+.product-card h3 {
+  font-size: 1.25rem;
+  padding: 1.5rem 1.5rem 0.5rem;
+  color: var(--bg-dark);
+}
+
+.product-card .price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-gold);
+  padding: 0 1.5rem 1.5rem;
+}
+
+.product-card button {
+  margin: auto 1.5rem 1.5rem;
+  padding: 0.9rem;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.product-card button:hover {
+  background-color: var(--primary-gold);
+  color: #121212;
+}
+
+/* ==========================================================================
+   5. LATERAL DO CARRINHO (SIDEBAR)
+   ========================================================================== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adicione a classe 'active' via JS ao abrir o carrinho */
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.sidebar-header h3 {
+  font-size: 1.3rem;
+  color: var(--primary-gold);
+}
+
+.close-btn {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #ffffff;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  color: var(--primary-gold);
+}
+
+#itens-carrinho {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* Estilo para quando os itens forem adicionados dinamicamente */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-info h4 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.cart-item-info span {
+  font-size: 0.9rem;
+  color: var(--primary-gold);
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  padding: 1.5rem;
+  background-color: #faf8f5;
+  border-top: 1px solid var(--border-color);
+}
+
+.sidebar-footer p {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  color: var(--bg-dark);
+}
+
+.sidebar-footer p strong {
+  color: var(--primary-gold);
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-gold);
+  color: #121212;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-checkout:hover {
+  background-color: var(--bg-dark);
+  color: var(--primary-gold);
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+  background-color: var(--bg-dark);
+  color: #888888;
+  text-align: center;
+  padding: 2.5rem 5%;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (DISPOSITIVOS MÓVEIS)
+   ========================================================================== */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 5%;
+  }
+
+  nav ul {
+    gap: 1.2rem;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+  }
+
+  .banner {
+    min-height: 65vh;
+    padding: 0 5%;
+  }
+
+  .banner h1 {
+    font-size: 2.2rem;
+  }
+
+  .banner p {
+    font-size: 1rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    right: -100%;
+  }
+
+  main#produtos {
+    padding: 4rem 5%;
+  }
+}
