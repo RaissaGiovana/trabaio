@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Cabeçalho / Menu -->
+    <!-- Cabeçalho / Menu com os dois Brasões nos cantos -->
     <header>
-        <div class="logo">CrownWigs</div>
+        <!-- Canto Superior Esquerdo: Brasão 1 -->
+        <div class="header-left">
+            <img src="img/brasao-esquerdo.png" alt="Brasão Esquerdo" class="brasao">
+        </div>
+
+        <!-- Centro: Menu de Navegação -->
         <nav>
             <ul>
                 <li><a href="#produtos">Coleções</a></li>
@@ -17,8 +22,13 @@
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
-        <div class="cart-icon" onclick="toggleCarrinho()">
-            🛒 <span id="cart-count">0</span>
+
+        <!-- Canto Superior Direito: Carrinho + Brasão 2 -->
+        <div class="header-right">
+            <div class="cart-icon" onclick="toggleCarrinho()">
+                🛒 <span id="cart-count">0</span>
+            </div>
+            <img src="img/brasao-direito.png" alt="Brasão Direito" class="brasao">
         </div>
     </header>
 
@@ -31,28 +41,32 @@
 
     <!-- Seção de Produtos -->
     <main id="produtos">
-        <h2>Nossas Perucas Mais Vendidas</h2>
+        <h2>Perucas Disponíveis para Doação</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Todas as nossas perucas e lances são 100% gratuitos para pacientes oncológicos e pessoas em situação de vulnerabilidade.</p>
+        
         <div class="product-grid">
-            <!-- Produto 1 -->
+            <!-- Item 1 -->
             <div class="product-card">
-                <img src="https://placeholder.com" alt="Peruca Lace Front Humana">
+                <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=500&q=80" alt="Lace Front Cacheada Humana">
                 <h3>Lace Front - Cacheada Humana</h3>
-                <p class="price">R$ gratis </p>
-                <button onclick="adicionarAoCarrinho('Lace Front Cacheada', 1200)">Adicionar ao Carrinho</button>
+                <p class="price" style="color: #27ae60;">Gratuito</p>
+                <button onclick="adicionarAoCarrinho('Lace Front Cacheada (Doação)', 0)" style="background-color: #27ae60;">Solicitar Doação</button>
             </div>
-            <!-- Produto 2 -->
+
+            <!-- Item 2 -->
             <div class="product-card">
-                <img src="https://placeholder.com" alt="Peruca Fibra Futura Lisa">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" alt="Peruca Lisa Fibra Futura">
                 <h3>Peruca Lisa - Fibra Futura Premium</h3>
-                <p class="price">R$ gratis </p>
-                <button onclick="adicionarAoCarrinho('Fibra Futura Lisa', 450)">Adicionar ao Carrinho</button>
+                <p class="price" style="color: #27ae60;">Gratuito</p>
+                <button onclick="adicionarAoCarrinho('Fibra Futura Lisa (Doação)', 0)" style="background-color: #27ae60;">Solicitar Doação</button>
             </div>
-            <!-- Produto 3 -->
+
+            <!-- Item 3 -->
             <div class="product-card">
-                <img src="https://placeholder.com" alt="Peruca Bob Ondulado">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=500&q=80" alt="Bob Ondulado Ruivo">
                 <h3>Bob Ondulado - Ruivo Natural</h3>
-                <p class="price">R$ gratis</p>
-                <button onclick="adicionarAoCarrinho('Bob Ondulado Ruivo', 890)">Adicionar ao Carrinho</button>
+                <p class="price" style="color: #27ae60;">Gratuito</p>
+                <button onclick="adicionarAoCarrinho('Bob Ondulado Ruivo (Doação)', 0)" style="background-color: #27ae60;">Solicitar Doação</button>
             </div>
         </div>
     </main>
@@ -72,6 +86,7 @@
         </div>
     </div>
 
+    <!-- Rodapé -->
     <footer>
         <p>&copy; 2026 CrownWigs. Todos os direitos reservados.</p>
     </footer>
