@@ -82,9 +82,63 @@
         </div>
         <div class="sidebar-footer">
             <p>Total: <strong id="total-carrinho">R$ 0,00</strong></p>
-            <button class="btn-checkout">Finalizar Compra</button>
+            <button class="btn-checkout" onclick="abrirFormularioDoacao()">
+    Continuar Solicitação
+</button>
         </div>
     </div>
+
+<!-- Formulário de Doação -->
+<div id="modal-doacao" class="modal-doacao">
+
+    <div class="formulario-doacao">
+
+        <span class="fechar-formulario"
+              onclick="fecharFormularioDoacao()">
+            &times;
+        </span>
+
+        <h2>Solicitar Doação</h2>
+
+        <p>Preencha seus dados para continuar.</p>
+
+        <form id="form-doacao">
+
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome"
+                   name="nome" required>
+
+            <label for="contato">Telefone ou e-mail:</label>
+            <input type="text" id="contato"
+                   name="contato" required>
+
+            <label for="entrega">Como deseja receber?</label>
+            <select id="entrega" name="entrega" required>
+                <option value="">Selecione</option>
+                <option value="ponto">
+                    Retirar em um ponto de coleta
+                </option>
+                <option value="entrega">
+                    Solicitar entrega
+                </option>
+            </select>
+
+            <label for="localizacao">Localização:</label>
+            <textarea id="localizacao"
+                      name="localizacao"
+                      placeholder="Cidade, bairro ou endereço"
+                      required></textarea>
+
+            <button type="submit">
+                Confirmar Solicitação
+            </button>
+
+        </form>
+        <!-- A mensagem aparece aqui após confirmar -->
+        <p id="mensagem-doacao"></p>
+
+    </div>
+</div>
 
     <!-- Rodapé -->
     <footer>

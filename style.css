@@ -264,3 +264,83 @@ footer {
     color: white;
     font-size: 14px;
 }
+
+/* Janela do formulário */
+.modal-doacao {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Caixa central */
+.formulario-doacao {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Título */
+.formulario-doacao h2 {
+    text-align: center;
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+/* Campos */
+.formulario-doacao label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.formulario-doacao input,
+.formulario-doacao select,
+.formulario-doacao textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Botão */
+.formulario-doacao button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Fechar */
+.fechar-formulario {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Confirmação */
+#mensagem-doacao {
+    color: #27ae60;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 1.6;
+}
