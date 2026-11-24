@@ -344,3 +344,16 @@ footer {
     margin-top: 15px;
     line-height: 1.6;
 }
+.btn-remover {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.btn-remover:hover {
+    background-color: #c0392b;
+}

@@ -2,53 +2,88 @@
 let carrinho = [];
 let total = 0;
 
-// Abre e fecha a barra lateral do carrinho
+
+// ABRIR E FECHAR CARRINHO
 function toggleCarrinho() {
     const sidebar = document.getElementById('sidebar-carrinho');
+
     sidebar.classList.toggle('open');
 }
 
-// Adiciona o produto selecionado ao carrinho
+
+// ADICIONAR PRODUTO AO CARRINHO
 function adicionarAoCarrinho(nome, preco) {
     carrinho.push({ nome, preco });
+
     total += preco;
+
     atualizarInterfaceCarrinho();
 }
 
-// Atualiza o contador e a lista do carrinho
+
+// REMOVER PRODUTO DO CARRINHO
+function removerDoCarrinho(index) {
+    const produto = carrinho[index];
+
+    total -= produto.preco;
+
+    carrinho.splice(index, 1);
+
+    atualizarInterfaceCarrinho();
+}
+
+
+// ATUALIZAR INTERFACE DO CARRINHO
 function atualizarInterfaceCarrinho() {
+
+    // Atualiza contador
     document.getElementById('cart-count').innerText =
         carrinho.length;
 
+    // Lista de produtos
     const containerItens =
         document.getElementById('itens-carrinho');
 
     if (carrinho.length === 0) {
+
         containerItens.innerHTML =
             '<p style="padding: 20px; color: #777;">Seu carrinho está vazio.</p>';
+
     } else {
+
         containerItens.innerHTML = '';
 
-        carrinho.forEach((item) => {
+        carrinho.forEach((item, index) => {
+
             const div = document.createElement('div');
+
             div.classList.add('cart-item');
 
             div.innerHTML = `
                 <span>${item.nome}</span>
-                <strong>R$ ${item.preco.toFixed(2).replace('.', ',')}</strong>
+
+                <strong>
+                    R$ ${item.preco.toFixed(2).replace('.', ',')}
+                </strong>
+
+                <button
+                    onclick="removerDoCarrinho(${index})"
+                    class="btn-remover">
+                    Remover
+                </button>
             `;
 
             containerItens.appendChild(div);
         });
     }
 
+    // Atualiza valor total
     document.getElementById('total-carrinho').innerText =
         `R$ ${total.toFixed(2).replace('.', ',')}`;
 }
 
 
 // ABRIR FORMULÁRIO DE DOAÇÃO
-
 function abrirFormularioDoacao() {
 
     if (carrinho.length === 0) {
@@ -56,57 +91,78 @@ function abrirFormularioDoacao() {
         return;
     }
 
-    // Esconde a mensagem da solicitação anterior
+    // Esconde mensagem anterior
     document.getElementById('mensagem-doacao')
         .innerHTML = '';
 
-    // Abre o formulário
+    // Abre formulário
     document.getElementById('modal-doacao')
         .style.display = 'flex';
 
-    // Fecha o carrinho
+    // Fecha carrinho
     document.getElementById('sidebar-carrinho')
         .classList.remove('open');
 }
 
 
-
 // FECHAR FORMULÁRIO
 function fecharFormularioDoacao() {
-    document.getElementById('modal-doacao').style.display = 'none';
+
+    document.getElementById('modal-doacao')
+        .style.display = 'none';
 }
 
 
-// CONFIRMAR SOLICITAÇÃO
+// CONFIRMAR SOLICITAÇÃO DE DOAÇÃO
 document.getElementById('form-doacao')
     .addEventListener('submit', function(event) {
 
         event.preventDefault();
 
-        const nome = document.getElementById('nome').value;
-        const contato = document.getElementById('contato').value;
-        const entrega = document.getElementById('entrega').value;
-        const localizacao = document.getElementById('localizacao').value;
+        const nome =
+            document.getElementById('nome').value;
 
-        // Lista das perucas escolhidas
-        const produtos = carrinho.map(item => item.nome).join(', ');
+        const contato =
+            document.getElementById('contato').value;
 
-        const mensagem = document.getElementById('mensagem-doacao');
+        const entrega =
+            document.getElementById('entrega').value;
 
-        mensagem.innerHTML = `
-            <strong>Solicitação realizada!</strong><br><br>
-            Obrigado, ${nome}!<br>
-            Perucas solicitadas: ${produtos}<br>
-            Forma de recebimento: ${entrega === 'ponto' ? 'Ponto de coleta' : 'Entrega'}<br>
-            Localização: ${localizacao}<br>
-            Contato: ${contato}
-        `;
+        const localizacao =
+            document.getElementById('localizacao').value;
 
-        // Limpa o carrinho
+        // Produtos escolhidos
+        const produtos = carrinho
+            .map(item => item.nome)
+            .join(', ');
+
+        // Mensagem de confirmação
+        document.getElementById('mensagem-doacao')
+            .innerHTML = `
+                <strong>Solicitação realizada!</strong><br><br>
+
+                Obrigado, ${nome}!<br>
+
+                Perucas solicitadas: ${produtos}<br>
+
+                Forma de recebimento:
+                ${entrega === 'ponto'
+                    ? 'Ponto de coleta'
+                    : 'Entrega'}<br>
+
+                Localização: ${localizacao}<br>
+
+                Contato: ${contato}
+            `;
+
+        // Limpa carrinho
         carrinho = [];
+
         total = 0;
+
         atualizarInterfaceCarrinho();
 
-        // Limpa o formulário
+        // Limpa campos
         this.reset();
     });
+
